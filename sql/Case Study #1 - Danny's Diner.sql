@@ -144,3 +144,31 @@ FROM(
 	WHERE order_date > join_date) Final
 WHERE order_date <= EOMONTH('2021-01-01')
 GROUP BY customer_id
+
+/* Join All The Things */
+SELECT S.customer_id, order_date, product_name, price,
+CASE
+	WHEN order_date >= join_date THEN 'Y'
+	ELSE 'N'
+	END AS member
+FROM sales S
+JOIN menu M ON M.product_id = S.product_id
+LEFT JOIN members MS ON MS.customer_id = S.customer_id
+
+/* Rank All The Things */
+WITH Final AS (
+	SELECT S.customer_id, order_date, product_name, price,
+		CASE
+		WHEN order_date >= join_date THEN 'Y'
+		ELSE 'N'
+		END AS member
+	FROM sales S
+	JOIN menu M ON M.product_id = S.product_id
+	LEFT JOIN members MS ON MS.customer_id = S.customer_id)
+
+SELECT *,
+	CASE
+	WHEN member = 'N' THEN NULL
+	ELSE ROW_NUMBER() OVER (PARTITION BY customer_id, member ORDER BY order_date)
+	END AS ranking
+FROM Final
