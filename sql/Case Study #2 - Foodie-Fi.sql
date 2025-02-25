@@ -32,7 +32,7 @@ VALUES
   ... (2650 rows)
 
 
-/* Based off the 8 sample customers provided in the sample from the subscriptions table, write a brief description about each customer’s onboarding journey.
+/* Based off the 8 sample customers provided in the sample from the subscriptions table, write a brief description about each customerâ€™s onboarding journey.
 Try to keep it as short as possible - you may also want to run some sort of join to make your explanations a bit easier! */
 SELECT * FROM subscriptions S
 JOIN plans P ON S.plan_id = P.plan_id
