@@ -20,6 +20,9 @@ sudo dnf install -y httpd php php-mysqli mariadb105
 sudo systemctl start httpd
 ````
 
+![image](https://github.com/user-attachments/assets/be8409cb-0cd8-4572-bc09-29280774f3d6)
+
+
 **4. Set to start server automatically every time it boots**
 
 ````
