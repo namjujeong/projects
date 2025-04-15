@@ -208,6 +208,9 @@ function TableExists($tableName, $connection, $dbName) {
 ?> 
 ````
 
+![image](https://github.com/user-attachments/assets/dde6da67-e994-4e77-b708-b5de897fb830)
+
+
 
 
 # Reference
